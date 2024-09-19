@@ -17,9 +17,9 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 # Configuration
-BOT_TOKEN = os.getenv("BOT_TOKEN", "YOUR_BOT_TOKEN")
-OWNER_ID = int(os.getenv("OWNER_ID", "YOUR_OWNER_ID"))
-OWNER_NAME = os.getenv("OWNER_NAME", "OwnerName")
+BOT_TOKEN = "7235833805:AAFjZDU5_G9Q4K5VTNv-hw5ROYLSHCyjbh4"
+OWNER_ID = 1984816095
+OWNER_NAME = "Jukerhenapadega"
 BINLIST_URL = "https://binlist.net/"
 
 # Generate random credit card numbers
@@ -79,7 +79,7 @@ async def bin_lookup(update: Update, context: CallbackContext) -> None:
         )
         return
 
-    response = requests.get(f"{BINLIST_URL}{bin_number}")
+    response = requests.get(f"{BINLIST_URL}/{bin_number}")
     data = response.json()
 
     result = (
@@ -210,7 +210,7 @@ def main() -> None:
         listen="0.0.0.0",
         port=int(os.getenv("PORT", 5000)),
         url_path=BOT_TOKEN,
-        webhook_url=f"https://files-checker.onrender.com/{BOT_TOKEN}"
+        webhook_url=f"https://genz-7p5e.onrender.com/{BOT_TOKEN}"
     )
 
 if __name__ == '__main__':
