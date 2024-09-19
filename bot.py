@@ -3,6 +3,7 @@ import random
 import string
 import requests
 import logging
+import asyncio
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, CallbackContext
 from flask import Flask, request
@@ -20,7 +21,6 @@ BOT_TOKEN = os.getenv("BOT_TOKEN", "YOUR_BOT_TOKEN")
 OWNER_ID = int(os.getenv("OWNER_ID", "YOUR_OWNER_ID"))
 OWNER_NAME = os.getenv("OWNER_NAME", "OwnerName")
 BINLIST_URL = "https://binlist.net/"
-VALID_CARD_URL = "https://example.com/check_card"  # Replace with actual card validation service
 
 # Generate random credit card numbers
 def generate_card_number():
