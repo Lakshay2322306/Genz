@@ -1,0 +1,3 @@
+python-telegram-bot==20.0a3
+requests
+Flask
