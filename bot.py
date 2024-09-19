@@ -172,15 +172,15 @@ def webhook():
 
     if chat_id and text:
         if text.startswith('/bin'):
-            bin_lookup(update=Update(message=message, effective_chat=Update(message=message, effective_chat={'id': chat_id})), context=None)
+            asyncio.run(bin_lookup(Update(message=message, effective_chat=Update(message=message, effective_chat={'id': chat_id})), CallbackContext(None)))
         elif text.startswith('/check'):
-            check_card(update=Update(message=message, effective_chat=Update(message=message, effective_chat={'id': chat_id})), context=None)
+            asyncio.run(check_card(Update(message=message, effective_chat=Update(message=message, effective_chat={'id': chat_id})), CallbackContext(None)))
         elif text.startswith('/status'):
-            status(update=Update(message=message, effective_chat=Update(message=message, effective_chat={'id': chat_id})), context=None)
+            asyncio.run(status(Update(message=message, effective_chat=Update(message=message, effective_chat={'id': chat_id})), CallbackContext(None)))
         elif text.startswith('/credits'):
-            credits(update=Update(message=message, effective_chat=Update(message=message, effective_chat={'id': chat_id})), context=None)
+            asyncio.run(credits(Update(message=message, effective_chat=Update(message=message, effective_chat={'id': chat_id})), CallbackContext(None)))
         else:
-            await context.bot.send_message(chat_id=chat_id, text="🚫 Unknown command. Use /help for a list of commands.")
+            asyncio.run(context.bot.send_message(chat_id=chat_id, text="🚫 Unknown command. Use /help for a list of commands."))
         return "OK", 200
 
     logger.warning("Chat ID or text missing in the message.")
